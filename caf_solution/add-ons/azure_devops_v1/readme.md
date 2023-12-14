@@ -100,5 +100,3 @@ rover -lz /tf/caf/caf_solution/add-ons/azure_devops_v1 \
   -env sandpit \
   -a apply
 ```
-
-We are planning to release more examples on how to deploy the Azure Devops Agents.

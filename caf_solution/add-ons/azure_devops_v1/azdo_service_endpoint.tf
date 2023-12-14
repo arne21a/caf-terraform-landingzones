@@ -42,7 +42,6 @@ resource "azuredevops_serviceendpoint_azurerm" "azure" {
 #
 # Grant acccess to service endpoint to all pipelines in the project
 #
-
 resource "azuredevops_resource_authorization" "endpoint" {
   for_each = {
     for key, value in var.service_endpoints : key => value
@@ -52,5 +51,5 @@ resource "azuredevops_resource_authorization" "endpoint" {
   project_id  = data.azuredevops_project.project[each.value.project_key].id
   resource_id = azuredevops_serviceendpoint_azurerm.azure[each.key].id
   type        = "endpoint"
-  authorized  = true
+  authorized  = each.value.grant_public_access
 }

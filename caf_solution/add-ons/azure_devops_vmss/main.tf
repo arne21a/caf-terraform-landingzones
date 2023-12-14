@@ -1,24 +1,44 @@
 terraform {
   required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.75.0"
-    }
+    // azurerm version driven by the caf module
     azuread = {
       source  = "hashicorp/azuread"
       version = "~> 2.45.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.5.0"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.1.0"
+    }
+    external = {
+      source  = "hashicorp/external"
+      version = "~> 2.2.0"
+    }
     azuredevops = {
       source  = "microsoft/azuredevops"
-      version = "~> 0.2.1"
+      version = "~> 0.1.0"
+    }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "4.0.4"
+    }
+    azurecaf = {
+      source  = "aztfmod/azurecaf"
+      version = "~> 1.2.0"
     }
   }
-  required_version = ">= 1.3.5"
+  required_version = ">= 0.13"
 }
 
 provider "azurerm" {
   partner_id = "ca4078f8-9bc4-471b-ab5b-3af6b86a42c8"
   # partner identifier for CAF Terraform landing zones.
+
+  storage_use_azuread = true
+
   features {
     key_vault {
       purge_soft_delete_on_destroy = true

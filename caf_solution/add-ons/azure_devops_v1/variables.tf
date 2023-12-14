@@ -70,8 +70,22 @@ variable "variable_groups" {
 variable "pipelines" {
   default = {}
 }
+variable "repositories" {
+  default = {}
+}
+variable "generic_git_endpoints" {
+  default = {}
+}
+variable "project_role_assignment" {
+  default = {}
+}
 variable "azdo_pat_admin" {
   type        = string
   default     = null
   description = "(Optional). Azure Devops PAT Token. If not provided with this value must be retrieved from the Keyvault secret."
+}
+variable "grant_public_access" {
+  type = bool
+  default = true
+  description = "Set to true to allow public access in the project"
 }
